@@ -1,0 +1,31 @@
+{
+  "name": "bugslife/query_notice",
+  "description": "In laravel,When you listen sql query and notice your by email.You can use this repository.",
+  "type": "library",
+  "require": {
+    "php": "7.1.2"
+  },
+  "autoload": {
+    "classmap": [
+      "database/seeds",
+      "database/factories"
+    ],
+    "psr-4": {
+      "App\\": "app/",
+    "BugsLife\\QueryNotice\\":"src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Blue",
+      "email": "757470062@qq.com"
+    }
+  ],
+  "minimum-stability": "dev"
+}
