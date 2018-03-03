@@ -2,17 +2,16 @@
 /**
  * Created by PhpStorm.
  * User: huangangui
- * Date: 2018/2/24
- * Time: 下午1:52
+ * Date: 2018/3/3
+ * Time: 下午6:03
  */
 
-namespace BugsLife\QueryNotice\Format;
+namespace BugsLife\QueryNotice\Format\Mail;
 
-
-use App\Libraries\QueryNotice\Mail\QueryNoticeMail;
+use BugsLife\QueryNotice\Format\Format;
 use Illuminate\Support\Facades\Mail;
 
-class EmailFormat extends Format
+class MailFormat extends Format
 {
     /**
      * Start use this format notice sql query.

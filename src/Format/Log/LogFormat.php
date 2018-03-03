@@ -3,13 +3,14 @@
  * Created by PhpStorm.
  * User: huangangui
  * Date: 2018/2/24
- * Time: 下午2:31
+ * Time: 下午1:53
  */
 
-namespace BugsLife\QueryNotice\Format;
+namespace BugsLife\QueryNotice\Format\Log;
 
+use BugsLife\QueryNotice\Format\Format;
 
-class DatabaseFormat extends Format
+class LogFormat extends Format
 {
 
     /**
@@ -19,6 +20,6 @@ class DatabaseFormat extends Format
      */
     public function run($notice)
     {
-        // TODO: Implement run() method.
+        \Log::info($this->name, $notice);
     }
 }

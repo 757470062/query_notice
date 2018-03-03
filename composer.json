@@ -3,7 +3,7 @@
   "description": "In laravel,When you listen sql query and notice your by email.You can use this repository.",
   "type": "library",
   "require": {
-    "php": "7.1.2"
+    "php": "7.0.24"
   },
   "autoload": {
     "classmap": [
@@ -12,7 +12,7 @@
     ],
     "psr-4": {
       "App\\": "app/",
-    "BugsLife\\QueryNotice\\":"src"
+      "BugsLife\\QueryNotice\\": "src"
     }
   },
   "autoload-dev": {

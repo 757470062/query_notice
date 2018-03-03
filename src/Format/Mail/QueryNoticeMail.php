@@ -1,6 +1,6 @@
 <?php
 
-namespace BugsLife\QueryNotice\Mail;
+namespace BugsLife\QueryNotice\Format\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -24,7 +24,6 @@ class QueryNoticeMail extends Mailable
 
     /**
      * Build the message.
-     *
      * @return $this
      */
     public function build()

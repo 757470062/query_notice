@@ -2,7 +2,7 @@
 
 namespace BugsLife\QueryNotice\Middleware;
 
-use App\Libraries\QueryNotice\Notice;
+use BugsLife\QueryNotice\Notice;
 use Closure;
 
 class QueryMiddleware
@@ -16,9 +16,8 @@ class QueryMiddleware
 
     /**
      * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure $next
      * @return mixed
      */
     public function handle($request, Closure $next)

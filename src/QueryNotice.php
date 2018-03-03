@@ -9,7 +9,6 @@
 namespace BugsLife\QueryNotice;
 
 
-
 class QueryNotice implements Notice
 {
     /**
@@ -31,8 +30,8 @@ class QueryNotice implements Notice
      * Sql query notice base type.
      */
     private $notice_type = [
-        'log' => \Facades\App\Libraries\QueryNotice\Format\LogFormat::class,
-        'email' => \Facades\App\Libraries\QueryNotice\Format\EmailFormat::class,
+        'log' => \Facades\BugsLife\QueryNotice\Format\Log\LogFormat::class,
+        'email' => \Facades\BugsLife\QueryNotice\Format\Mail\MailFormat::class,
     ];
 
     /**
