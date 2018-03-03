@@ -31,7 +31,7 @@ class QueryNotice implements Notice
      */
     private $notice_type = [
         'log' => \Facades\BugsLife\QueryNotice\Format\Log\LogFormat::class,
-        'email' => \Facades\BugsLife\QueryNotice\Format\Mail\MailFormat::class,
+        'mail' => \Facades\BugsLife\QueryNotice\Format\Mail\MailFormat::class,
     ];
 
     /**

@@ -20,7 +20,7 @@ return [
     /*
      * Open all object.
      */
-    'is_all_object' => false,
+    'is_all_object' => true,
 
     /*
      * Extend notice type.
@@ -28,7 +28,7 @@ return [
     'extend_notice_type' => [
         //Base format.This is demo.
         //'log' => \Facades\BugsLife\QueryNotice\Format\Log\LogFormat::class,
-        //'email' => \Facades\BugsLife\QueryNotice\Format\Mail\MailFormat::class,
+        //'mail' => \Facades\BugsLife\QueryNotice\Format\Mail\MailFormat::class,
     ],
 
     /*
@@ -36,7 +36,7 @@ return [
      */
     'notice_type_state' => [
         'log' => true,
-        'email' => true,
+        'mail' => false,
         'db' => false,
     ],
 
