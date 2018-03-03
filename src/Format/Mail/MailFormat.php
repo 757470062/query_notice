@@ -13,6 +13,19 @@ use Illuminate\Support\Facades\Mail;
 
 class MailFormat extends Format
 {
+    /*
+     * Send to users email.
+     */
+    private $emails = [];
+
+    /**
+     * MailFormat constructor.
+     */
+    public function __construct()
+    {
+        $this->emails = config('queryNotice.emails');
+    }
+
     /**
      * Start use this format notice sql query.
      * @param $notice
@@ -20,6 +33,8 @@ class MailFormat extends Format
      */
     public function run($notice)
     {
-        Mail::to('757470062@qq.com')->send(new QueryNoticeMail($notice));
+        foreach ($this->emails as $val){
+            Mail::to($val)->send(new QueryNoticeMail($notice));
+        }
     }
 }

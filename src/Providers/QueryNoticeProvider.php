@@ -30,7 +30,9 @@ class QueryNoticeProvider extends ServiceProvider
          */
         $this->loadViewsFrom(__DIR__.'/../views/mail/query-notice.blade.php', 'queryNotice');
 
-        //Notice open all object.
+        /*
+         * Notice open all object.
+         */
         if (config('queryNotice.is_all_object')) {
             $notice->notice();
         }
