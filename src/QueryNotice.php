@@ -52,7 +52,7 @@ class QueryNotice implements Notice
         $this->is_second = config('queryNotice.is_second');
         $this->is_open = config('queryNotice.is_open');
         $this->notice_type_state = config('queryNotice.notice_type_state');
-        $this->notice_type = array_merge($this->notice_type, config('queryNotice.extend_notice_type'));
+        $this->notice_type = array_merge($this->notice_type, config('queryNotice.extend_notice_type') ?? []);
         $this->max_time = config('queryNotice.max_time');
         $this->is_filter_log = config('queryNotice.is_filter_log');
     }

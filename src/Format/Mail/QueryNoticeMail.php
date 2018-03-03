@@ -29,6 +29,6 @@ class QueryNoticeMail extends Mailable
     public function build()
     {
         $notice = $this->notice;
-        return $this->view('query-notice.mail', compact('notice'));
+        return $this->view('query-notice.mail.query-notice', compact('notice'));
     }
 }

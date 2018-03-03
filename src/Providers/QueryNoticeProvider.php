@@ -13,24 +13,22 @@ class QueryNoticeProvider extends ServiceProvider
      */
     public function boot(Notice $notice)
     {
-        /*
-         * Set config
-         */
         $this->publishes([
+            //Set config
             __DIR__ . '/../config/queryNotice.php' => config_path('queryNotice.php'),
+            //Set mail view
+            __DIR__ . '/../views/mail/query-notice.blade.php' => resource_path('views/query-notice/mail/query-notice.blade.php')
         ], 'queryNotice');
 
         /*
-         *
+         * Create config
          */
         $this->mergeConfigFrom(__DIR__ . '/../config/queryNotice.php', 'queryNotice');
 
         /*
-         * Set mail views
+         * Create mail view
          */
-        $this->publishes([
-            __DIR__ . '/../views/mail/query-notice.blade.php' => resource_path('views/query-notice', 'queryNotice'),
-        ]);
+        $this->loadViewsFrom(__DIR__.'/../views/mail/query-notice.blade.php', 'queryNotice');
 
         //Notice open all object.
         if (config('queryNotice.is_all_object')) {
