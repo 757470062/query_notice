@@ -56,7 +56,7 @@ You can use it in the entire project, or use the middleware locally.Support log 
      */
     'notice_type_state' => [
         'log' => true,
-        'mail' => false,
+        'mail' => true,
         'db' => false,
     ],
 ```
@@ -85,8 +85,19 @@ class DatabaseFormat extends Format
      */
     'extend_notice_type' => [
         //Base format.This is demo.
-        //'log' => \Facades\BugsLife\QueryNotice\Format\Log\LogFormat::class,
-        //'email' => \Facades\BugsLife\QueryNotice\Format\Mail\MailFormat::class,
+        ...
+        'db' => \Facades\BugsLife\QueryNotice\Format\Database\DatabaseFormat::class,
+    ],
+```
+set Switch
+```
+    /*
+     * Set notice type open state. true equal open.
+     */
+    'notice_type_state' => [
+        'log' => true,
+        'mail' => true,
+        'db' => true,
     ],
 ```
 ## Feature
