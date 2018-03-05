@@ -3,7 +3,7 @@ In laravel,When you listen sql query and notice your by email.You can use this r
 
 ## Installation
 ```
-composer require bugslife/query_notice:dev-dev
+composer require bugslife/query_notice
 ```
 ## Provider
 ```
