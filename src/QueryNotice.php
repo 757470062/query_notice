@@ -11,6 +11,8 @@ namespace BugsLife\QueryNotice;
 
 class QueryNotice implements Notice
 {
+    const DB_QUERY_STRING = ['/query_notices/', '/information_schema/'];
+
     /**
      * Sql query notice open state.
      */
@@ -32,6 +34,7 @@ class QueryNotice implements Notice
     private $notice_type = [
         'log' => \Facades\BugsLife\QueryNotice\Format\Log\LogFormat::class,
         'mail' => \Facades\BugsLife\QueryNotice\Format\Mail\MailFormat::class,
+        'db' => \Facades\BugsLife\QueryNotice\Format\Database\DatabaseFormat::class,
     ];
 
     /**
@@ -81,7 +84,7 @@ class QueryNotice implements Notice
                 'query' => $query,
                 'time' => $time
             ];
-            $this->noticeType($notice);
+            $this->noticeType(array_merge($notice, $this->getModule()));
         });
     }
 
@@ -92,7 +95,13 @@ class QueryNotice implements Notice
     public function noticeType($notice)
     {
         foreach ($this->notice_type_state as $key => $value) {
+            //Insert notice break.
+            if ($this->isDbSql($notice['query'])) {
+                break;
+            }
+
             if ($value) {
+                $this->notice_type[$key]::run($notice);
                 if ($this->isFilterLog($key) || $this->isMaxTime($notice['time'])) {
                     $this->notice_type[$key]::run($notice);
                 }
@@ -106,9 +115,7 @@ class QueryNotice implements Notice
      */
     public function isFilterLog($notice_type_name)
     {
-        return strcasecmp($notice_type_name, 'log') === 0 && $this->is_filter_log
-            ? true
-            : false;
+        return strcasecmp($notice_type_name, 'log') === 0 && $this->is_filter_log;
     }
 
     /**
@@ -118,8 +125,38 @@ class QueryNotice implements Notice
      */
     public function isMaxTime($time)
     {
-        return $this->max_time < ceil($time)
-            ? true
-            : false;
+        return $this->max_time < ceil($time);
+    }
+
+    /**
+     * Database query not notice.
+     * @param $query
+     * @return bool
+     */
+    public function isDbSql($query)
+    {
+        foreach (self::DB_QUERY_STRING as $key => $value) {
+            if (boolval(preg_match($value, $query))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Get module info.
+     * @return array
+     */
+    public function getModule()
+    {
+        $module_str = 'null@null';
+        if (! \App::runningInConsole()) {
+            $module_str = \Route::current()->getActionName();
+        }
+        $module = explode('@', $module_str);
+        return [
+            'controller' => $module[0],
+            'function' => $module[1]
+        ];
     }
 }

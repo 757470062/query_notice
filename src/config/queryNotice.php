@@ -55,5 +55,10 @@ return [
      */
     'emails' => [
         '757470062@qq.com',
-    ]
+    ],
+
+    /*
+     * Paginate size.
+     */
+    'page' => 20,
 ];

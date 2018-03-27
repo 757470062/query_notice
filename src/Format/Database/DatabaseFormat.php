@@ -9,9 +9,20 @@
 namespace BugsLife\QueryNotice\Format\Database;
 
 use BugsLife\QueryNotice\Format\Format;
+use BugsLife\QueryNotice\Format\Database\QueryNoticeModel;
 
 class DatabaseFormat extends Format
 {
+    private $model;
+
+    /**
+     * DatabaseFormat constructor.
+     * @param \BugsLife\QueryNotice\Format\Database\QueryNoticeModel $queryNoticeModel
+     */
+    public function __construct(QueryNoticeModel $queryNoticeModel)
+    {
+        $this->model = $queryNoticeModel;
+    }
 
     /**
      * Start use this format notice sql query.
@@ -20,6 +31,7 @@ class DatabaseFormat extends Format
      */
     public function run($notice)
     {
-        // TODO: Implement run() method.
+        $this->model->create($notice);
     }
+
 }

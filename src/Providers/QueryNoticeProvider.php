@@ -17,8 +17,11 @@ class QueryNoticeProvider extends ServiceProvider
             //Set config
             __DIR__ . '/../config/queryNotice.php' => config_path('queryNotice.php'),
             //Set mail view
-            __DIR__ . '/../views/mail/query-notice.blade.php' => resource_path('views/query-notice/mail/query-notice.blade.php')
+            __DIR__ . '/../views/mail/query-notice.blade.php' => resource_path('views/query-notice/mail/query-notice.blade.php'),
+            //Set db view
+            __DIR__ . '/../views/database/index.blade.php' => resource_path('views/query-notice/database/index.blade.php')
         ], 'queryNotice');
+
 
         /*
          * Create config
@@ -28,7 +31,12 @@ class QueryNoticeProvider extends ServiceProvider
         /*
          * Create mail view
          */
-        $this->loadViewsFrom(__DIR__.'/../views/mail/query-notice.blade.php', 'queryNotice');
+        $this->loadViewsFrom(__DIR__ . '/../views/mail/query-notice.blade.php', 'queryNotice');
+
+        /*
+         * Create Db view
+         */
+        $this->loadViewsFrom(__DIR__ . '/../views/database/index.blade.php', 'queryNotice');
 
         /*
          * Notice open all object.
@@ -36,6 +44,16 @@ class QueryNoticeProvider extends ServiceProvider
         if (config('queryNotice.is_all_object')) {
             $notice->notice();
         }
+
+        /*
+         * Router
+         */
+        $this->loadRoutesFrom(__DIR__ . '/../Routers/Route.php');
+
+        /*
+         * Migrations
+         */
+        $this->loadMigrationsFrom(__DIR__ . '/../migrations');
     }
 
     /**
